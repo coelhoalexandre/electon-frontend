@@ -3,10 +3,22 @@ import { ReactNode } from 'react';
 interface TextProps {
   children: ReactNode;
   variant?: 'foreground' | 'background' | 'primary' | 'secondary';
+  as?: 'p' | 'span';
+  size?: 'sm' | 'base';
+  weight?: 'normal' | 'medium' | 'bold';
 }
 
-export default function Text({ children, variant = 'foreground' }: TextProps) {
+export default function Text({
+  children,
+  variant = 'foreground',
+  as = 'p',
+  size = 'sm',
+  weight = 'normal',
+}: TextProps) {
+  const Element = as;
   return (
-    <p className={`flex font-normal text-${variant} text-sm`}>{children}</p>
+    <Element className={`flex text-${variant} text-${size} font-${weight}`}>
+      {children}
+    </Element>
   );
 }

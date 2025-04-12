@@ -2,20 +2,31 @@
 
 :root {
   --background: #ffffff;
+  --background-gray: #f4f4f4;
   --foreground: #292d32;
   --primary: #003f62;
   --secondary: #eda415;
+  --secondary-hover: #df9b13;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-gray: var(--background-gray);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
 
   --font-primary: var(--font-poppins);
 
   --breakpoint-2xl: 90rem;
+}
+
+@layer components {
+  .frame {
+    padding-left: calc(var(--spacing) * 15);
+    padding-right: calc(var(--spacing) * 15);
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {

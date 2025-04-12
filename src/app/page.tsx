@@ -1,9 +1,11 @@
-import Header from '@/components/Header';
+import CarouselSection from '@/components/CarouselSection';
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <main>
+        <CarouselSection />
+      </main>
     </>
   );
 }
