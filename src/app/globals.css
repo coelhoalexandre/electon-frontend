@@ -3,11 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #292d32;
+  --primary: #003f62;
+  --secondary: #eda415;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+
   --font-primary: var(--font-poppins);
 
   --breakpoint-2xl: 90rem;
