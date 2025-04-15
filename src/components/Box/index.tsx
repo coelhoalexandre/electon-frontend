@@ -38,7 +38,7 @@ export default function Box({
         gap: `${gap}px`,
         flexDirection: direction,
         justifyContent: justify,
-        alignContent: items,
+        alignItems: items,
       }}
       className={`flex ${className}`}
       {...props}

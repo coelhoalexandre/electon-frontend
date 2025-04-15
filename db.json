@@ -3,39 +3,59 @@
     "list": [
       {
         "id": "1",
-        "name": "Tablet",
-        "totalItems": 1,
-        "src": "https://i.imgur.com/GUz0Jhi.png"
+        "name": "All categories",
+        "slug": "all-categories",
+        "totalItems": 7,
+        "src": "",
+        "isVisible": false
       },
       {
         "id": "2",
-        "name": "Laptop",
+        "name": "Tablet",
+        "slug": "tablet",
         "totalItems": 1,
-        "src": "https://i.imgur.com/GUz0Jhi.png"
+        "src": "https://i.imgur.com/GUz0Jhi.png",
+        "isVisible": true
       },
       {
         "id": "3",
-        "name": "Headphones",
+        "name": "Laptop",
+        "slug": "laptop",
         "totalItems": 1,
-        "src": "https://i.imgur.com/dlfAJi6.png"
+        "src": "https://i.imgur.com/GUz0Jhi.png",
+        "isVisible": true
       },
       {
         "id": "4",
-        "name": "Console",
+        "name": "Headphones",
+        "slug": "headphones",
         "totalItems": 1,
-        "src": "https://i.imgur.com/UOjYMN8.png"
+        "src": "https://i.imgur.com/dlfAJi6.png",
+        "isVisible": true
       },
       {
         "id": "5",
-        "name": "DSLR Camera",
-        "totalItems": 2,
-        "src": "https://i.imgur.com/rAGwBgJ.png"
+        "name": "Console",
+        "slug": "console",
+        "totalItems": 1,
+        "src": "https://i.imgur.com/UOjYMN8.png",
+        "isVisible": true
       },
       {
         "id": "6",
-        "name": "other",
+        "name": "DSLR Camera",
+        "slug": "dslr-camera",
         "totalItems": 2,
-        "src": "https://i.imgur.com/DaDWzjL.png"
+        "src": "https://i.imgur.com/rAGwBgJ.png",
+        "isVisible": true
+      },
+      {
+        "id": "7",
+        "name": "other",
+        "slug": "other",
+        "totalItems": 2,
+        "src": "https://i.imgur.com/DaDWzjL.png",
+        "isVisible": true
       }
     ],
     "totalItems": 7

@@ -5,20 +5,23 @@ import UserIcon from '@/components/Icon/UserIcon';
 import Search from '@/components/Search';
 import Text from '@/components/Text';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Main() {
   return (
     <div className='frame flex justify-between items-center py-6 bg-primary'>
       <Box align='center' gap={80}>
-        <h1 aria-labelledby='electon-logo'>
-          <Image
-            id='electon-logo'
-            src={'/electon_logo.png'}
-            alt=''
-            width={140}
-            height={39}
-          />
-        </h1>
+        <Link href={'/'}>
+          <h1 aria-labelledby='electon-logo' className='h-fit'>
+            <Image
+              id='electon-logo'
+              src={'/electon_logo.png'}
+              alt=''
+              width={140}
+              height={39}
+            />
+          </h1>
+        </Link>
         <Search />
       </Box>
       <Box gap={32} align='center'>

@@ -1,6 +1,6 @@
-export default interface ICategory {
-  id: string;
-  name: string;
-  totalItems: number;
+import ICatalogParamItem from './ICatalogParamItem';
+
+export default interface ICategory extends ICatalogParamItem {
   src: string;
+  isVisible: boolean;
 }

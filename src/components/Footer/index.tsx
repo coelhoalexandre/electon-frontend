@@ -35,7 +35,7 @@ const footerNavigationList = [
 
 export default function Footer() {
   return (
-    <footer className='flex flex-col gap-8 frame bg-tertiary py-10'>
+    <footer className='flex flex-col gap-8 frame bg-tertiary mt-24 py-10'>
       <NewsletterSection />
       <div className='grid grid-cols-[auto_1fr]'>
         <Box direction='column' gap={24}>
