@@ -4,15 +4,25 @@ import NavigationItemDropdown from './NavigationItemDropdown';
 export default function NavigationList() {
   return (
     <ul className='flex gap-7'>
-      <NavigationItemDropdown item='Home' itemList={[]} />
-      <NavigationItemDropdown item='Catalog' itemList={[]} />
-      <Text as='span' weight='medium' size='base'>
-        Blog
-      </Text>
-      <NavigationItemDropdown item='Pages' itemList={[]} />
-      <Text as='span' weight='medium' size='base'>
-        Pages
-      </Text>
+      <li>
+        <NavigationItemDropdown item='Home' itemList={[]} />
+      </li>
+      <li>
+        <NavigationItemDropdown item='Catalog' itemList={[]} />
+      </li>
+      <li>
+        <Text as='span' weight={500} size='base'>
+          Blog
+        </Text>
+      </li>
+      <li>
+        <NavigationItemDropdown item='Pages' itemList={[]} />
+      </li>
+      <li>
+        <Text as='span' weight={500} size='base'>
+          About us
+        </Text>
+      </li>
     </ul>
   );
 }

@@ -15,7 +15,7 @@ export default function NavigationItemDropdown({
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <MenuButton className='flex justify-center items-center gap-x-4'>
-        <Text as='span' size='base' weight='medium'>
+        <Text as='span' size='base' weight={500}>
           {item}
         </Text>
         <ArrowIcon />

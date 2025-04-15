@@ -3,19 +3,37 @@
 :root {
   --background: #ffffff;
   --background-gray: #f4f4f4;
+
   --foreground: #292d32;
+  --foreground-gray: #a5a5a5;
+
   --primary: #003f62;
+  --primary-hover: #043149;
+
   --secondary: #eda415;
   --secondary-hover: #df9b13;
+
+  --tertiary: #e2f4ff;
+  --tertiary-dark: #87bcd9;
+  --tertiary-dark-hover: #6ea1bd;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-background-gray: var(--background-gray);
+
   --color-foreground: var(--foreground);
+  --color-foreground-gray: var(--foreground-gray);
+
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+
   --color-secondary: var(--secondary);
   --color-secondary-hover: var(--secondary-hover);
+
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-dark: var(--tertiary-dark);
+  --color-tertiary-dark-hover: var(--tertiary-dark-hover);
 
   --font-primary: var(--font-poppins);
 

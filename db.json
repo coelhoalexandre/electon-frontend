@@ -1,0 +1,114 @@
+{
+  "categories": {
+    "list": [
+      {
+        "id": "1",
+        "name": "Tablet",
+        "totalItems": 1,
+        "src": "https://i.imgur.com/GUz0Jhi.png"
+      },
+      {
+        "id": "2",
+        "name": "Laptop",
+        "totalItems": 1,
+        "src": "https://i.imgur.com/GUz0Jhi.png"
+      },
+      {
+        "id": "3",
+        "name": "Headphones",
+        "totalItems": 1,
+        "src": "https://i.imgur.com/dlfAJi6.png"
+      },
+      {
+        "id": "4",
+        "name": "Console",
+        "totalItems": 1,
+        "src": "https://i.imgur.com/UOjYMN8.png"
+      },
+      {
+        "id": "5",
+        "name": "DSLR Camera",
+        "totalItems": 2,
+        "src": "https://i.imgur.com/rAGwBgJ.png"
+      },
+      {
+        "id": "6",
+        "name": "other",
+        "totalItems": 2,
+        "src": "https://i.imgur.com/DaDWzjL.png"
+      }
+    ],
+    "totalItems": 7
+  },
+  "products": {
+    "total": 5,
+    "list": [
+      {
+        "id": "1",
+        "name": "Wireless headphones",
+        "price": 11.7,
+        "stars": 0,
+        "category": "Headphones",
+        "src": "https://i.imgur.com/dlfAJi6.png"
+      },
+      {
+        "id": "2",
+        "name": "Play game",
+        "price": 11.7,
+        "stars": 0,
+        "category": "Console",
+        "src": "https://i.imgur.com/UOjYMN8.png"
+      },
+      {
+        "id": "3",
+        "name": "Tablet as laptop",
+        "price": 11.7,
+        "stars": 0,
+        "category": ["Tablet", "Laptop"],
+        "src": "https://i.imgur.com/GUz0Jhi.png"
+      },
+      {
+        "id": "4",
+        "name": "Canon EOS",
+        "price": 11.7,
+        "stars": 0,
+        "category": "DSLR Camera",
+        "src": "https://i.imgur.com/NrKjLCp.png"
+      },
+      {
+        "id": "5",
+        "name": "Canon Camera",
+        "price": 89,
+        "stars": 0,
+        "category": "DSLR Camera",
+        "src": "https://i.imgur.com/rAGwBgJ.png"
+      },
+      {
+        "id": "6",
+        "name": "JBL bar 2.1 deep bass",
+        "price": 89,
+        "stars": 0,
+        "category": "other",
+        "src": "https://i.imgur.com/ODf2041.png"
+      },
+      {
+        "id": "7",
+        "name": "Speaker",
+        "price": 11.7,
+        "stars": 0,
+        "category": "other",
+        "src": "https://i.imgur.com/DaDWzjL.png"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "id": "5",
+      "name": "Canon Camera",
+      "price": 89,
+      "stars": 0,
+      "category": "DSLR Camera",
+      "src": "https://i.imgur.com/rAGwBgJ.png"
+    }
+  ]
+}

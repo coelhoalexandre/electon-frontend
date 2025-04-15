@@ -2,6 +2,7 @@
 
 import search from '@/actions/search';
 import { useRef } from 'react';
+import Button from '../ButtonRoot/Button';
 
 export default function Search() {
   const searchRef = useRef<HTMLElement | null>(null);
@@ -14,7 +15,6 @@ export default function Search() {
     <search
       ref={searchRef}
       className='rounded-2xl pl-6 w-[30.5vw] min-w-3xs h-14 bg-background focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-secondary'
-      onFocus={console.log}
       onClick={focusOnInput}
     >
       <form
@@ -31,12 +31,14 @@ export default function Search() {
           className='w-full placeholder:font-inherit placeholder:text-sm placeholder:text-foreground outline-0'
           onFocus={onSearchInFocus}
         />
-        <button
+        <Button
           type='submit'
-          className='absolute right-0 rounded-2xl w-3/10 min-w-[6.625rem] text-sm h-full bg-secondary text-background'
+          size='sm'
+          borderWidth={0}
+          className='absolute right-0 w-3/10 min-w-[6.625rem] h-full'
         >
           Search
-        </button>
+        </Button>
       </form>
     </search>
   );

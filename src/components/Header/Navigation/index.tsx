@@ -9,7 +9,7 @@ export default function Navigation() {
         <DropdownCategories />
         <NavigationList />
       </div>
-      <Text variant='primary' weight='bold' size='base'>
+      <Text variant='primary' weight={700} size='base'>
         30 Days Free Return
       </Text>
     </div>

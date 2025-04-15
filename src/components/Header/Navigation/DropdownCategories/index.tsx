@@ -1,14 +1,14 @@
-import categoriesList from '@/common/categoriesList';
+import { fetchCategories } from '@/common/fetchData';
 import ArrowIcon from '@/components/Icon/ArrowIcon';
 import Text from '@/components/Text';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
 
-export default function DropdownCategories() {
+export default async function DropdownCategories() {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <MenuButton className='flex h-full justify-center items-center gap-x-4 bg-secondary px-3.5 py-6 hover:bg-secondary-hover'>
-        <Text as='span' variant='background' size='base' weight='medium'>
+        <Text as='span' variant='background' size='base' weight={500}>
           Browse categories
         </Text>
         <ArrowIcon stroke='#ffffff' />
@@ -19,13 +19,13 @@ export default function DropdownCategories() {
         className='absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in'
       >
         <div className='py-1'>
-          {categoriesList.map((category, index) => (
+          {(await fetchCategories()).list.map(({ name }, index) => (
             <MenuItem key={index}>
               <Link
-                href={`/catalog/?category=${category}`}
+                href={`/catalog/?category=${name}`}
                 className='block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden'
               >
-                {category}
+                {name}
               </Link>
             </MenuItem>
           ))}
