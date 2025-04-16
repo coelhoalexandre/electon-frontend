@@ -1,4 +1,4 @@
-import { fetchHighlights } from '@/common/fetchData';
+import { fetchHighlights } from '@/utils/fetchData';
 import HighlightsCarousel from './HighlightsCarousel';
 
 export default async function Highlights() {

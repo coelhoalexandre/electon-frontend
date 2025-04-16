@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Providers from '@/context/Providers';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -28,7 +29,7 @@ export default function RootLayout({
         <div hidden className='text-lg'></div>
         <div hidden className='text-xl'></div>
         <Header />
-        {children}
+        <Providers>{children}</Providers>
         <Footer />
       </body>
     </html>

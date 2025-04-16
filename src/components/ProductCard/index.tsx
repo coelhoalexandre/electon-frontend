@@ -10,6 +10,7 @@ import Button from '../ButtonRoot/Button';
 import CartIcon from '../Icon/CartIcon';
 import ButtonLink from '../ButtonRoot/ButtonLink';
 import EyeIcon from '../Icon/EyeIcon';
+import { useCartContext } from '@/context/cartContext';
 
 interface ProductCardProps {
   product: IProduct;
@@ -29,6 +30,7 @@ export default function ProductCard({
   hasHover = false,
   isVisibleButtons = false,
 }: ProductCardProps) {
+  const { addCart } = useCartContext();
   const [isHover, setIsHover] = useState(false);
 
   const onMouseEnter = () => setIsHover(true);
@@ -84,6 +86,7 @@ export default function ProductCard({
           <Button
             variant='tertiary-dark'
             className='flex justify-between items-center gap-10 py-4 px-6 text-foreground'
+            onClick={() => addCart(product)}
           >
             Add cart{' '}
             <div className='flex justify-center items-center bg-secondary rounded-full w-[30px] h-[30px]'>

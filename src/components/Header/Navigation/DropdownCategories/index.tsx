@@ -1,4 +1,4 @@
-import { fetchCategories } from '@/common/fetchData';
+import { fetchCategories } from '@/utils/fetchData';
 import ArrowIcon from '@/components/Icon/ArrowIcon';
 import Text from '@/components/Text';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';

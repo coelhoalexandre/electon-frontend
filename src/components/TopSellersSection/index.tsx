@@ -1,4 +1,4 @@
-import { fetchProducts } from '@/common/fetchData';
+import { fetchProducts } from '@/utils/fetchData';
 import ProductCard from '../ProductCard';
 
 export default async function TopSellersSection() {

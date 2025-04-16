@@ -1,4 +1,4 @@
-import { fetchCatalogParams } from '@/common/fetchData';
+import { fetchCatalogParams } from '@/utils/fetchData';
 import Text from '@/components/Text';
 import CatalogEndpoints from '@/types/CatalogEndpoints';
 import CatalogParamCheckbox from './CatalogParamCheckbox';

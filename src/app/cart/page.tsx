@@ -1,8 +1,11 @@
+'use client';
+
 import Box from '@/components/Box';
 import Button from '@/components/ButtonRoot/Button';
 import CartButtonList from '@/components/CartButtonList';
 import DeleteIcon from '@/components/Icon/DeleteIcon';
 import Text from '@/components/Text';
+import { useCartContext } from '@/context/cartContext';
 import Image from 'next/image';
 
 const productPropertiesList = [
@@ -13,23 +16,18 @@ const productPropertiesList = [
 ] as const;
 
 export default function Cart() {
-  const products: {
-    id: string;
-    src: string;
-    name: string;
-    price: number;
-    quantity: number;
-    subtotal: number;
-  }[] = [
-    {
-      id: '1',
-      src: 'https://i.imgur.com/UOjYMN8.png',
-      name: 'Play game',
-      price: 11.7,
-      quantity: 1,
-      subtotal: 11.7,
-    },
-  ];
+  const { cartItems } = useCartContext();
+
+  // [
+  //   {
+  //     id: '1',
+  //     src: 'https://i.imgur.com/UOjYMN8.png',
+  //     name: 'Play game',
+  //     price: 11.7,
+  //     quantity: 1,
+  //     subtotal: 11.7,
+  //   },
+  // ];
   return (
     <main className='frame grid grid-cols-[1fr_auto] grid-rows-[1fr_auto] gap-y-8 gap-x-5'>
       <section>
@@ -54,7 +52,7 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody className=''>
-            {products.map((product) => (
+            {cartItems.map((product) => (
               <tr
                 key={product.id}
                 className='relative border-b-1 border-foreground-gray'
