@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
-type Sizes = 'sm' | 'base' | 'lg' | 'xl';
+type Sizes = 'sm' | 'base' | 'lg' | 'xl' | '2xl';
 type Breakpoints = 'sm' | 'md' | 'lg';
 
 interface TextProps {

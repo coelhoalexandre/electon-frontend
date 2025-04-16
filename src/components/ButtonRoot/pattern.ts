@@ -11,7 +11,8 @@ const buttonClass = {
 export interface ButtonRootProps {
   variant?: 'primary' | 'secondary' | 'tertiary-dark';
   filling?: 'outline' | 'filled';
-  size?: 'sm' | 'base';
+  size?: 'sm' | 'base' | 'xl' | '2xl';
+  radius?: '2xl' | '4xl';
   borderWidth?: 0 | 1;
 }
 
@@ -19,13 +20,16 @@ export const getStyle = ({
   variant,
   size,
   borderWidth,
+  radius,
 }: {
   variant: string;
   size: string;
   borderWidth: number;
+  radius: '2xl' | '4xl';
 }): CSSProperties => ({
   ['--variant' as string]: `var(--${variant})`,
   ['--variant-hover' as string]: `var(--${variant}-hover)`,
+  ['--radius' as string]: `var(--radius-${radius})`,
   fontSize: `var(--text-${size})`,
   borderWidth: borderWidth,
 });
@@ -37,4 +41,4 @@ export const getClassName = ({
   filling: 'outline' | 'filled';
   classes: string;
 }) =>
-  `${buttonClass[filling]} font-semibold border-(--variant) rounded-2xl ${classes}`;
+  `${buttonClass[filling]} font-semibold border-(--variant) rounded-(--radius) ${classes}`;

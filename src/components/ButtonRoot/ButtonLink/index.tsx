@@ -10,11 +10,12 @@ export default function ButtonLink({
   filling = 'filled',
   size = 'base',
   borderWidth = 1,
+  radius = '2xl',
   className: classes = '',
   children,
   ...props
 }: ButtonProps) {
-  const style = getStyle({ variant, borderWidth, size });
+  const style = getStyle({ variant, borderWidth, size, radius });
   const className = getClassName({ classes, filling });
 
   return (

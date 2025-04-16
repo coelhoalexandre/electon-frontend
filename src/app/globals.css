@@ -16,6 +16,8 @@
   --tertiary: #e2f4ff;
   --tertiary-dark: #87bcd9;
   --tertiary-dark-hover: #6ea1bd;
+
+  --error: #c33131;
 }
 
 @theme inline {
@@ -34,6 +36,8 @@
   --color-tertiary: var(--tertiary);
   --color-tertiary-dark: var(--tertiary-dark);
   --color-tertiary-dark-hover: var(--tertiary-dark-hover);
+
+  --color-error: var(--error);
 
   --font-primary: var(--font-poppins);
 

@@ -10,7 +10,8 @@ interface BoxProps extends ComponentProps<'div'> {
     | 'end'
     | 'space-between'
     | 'space-around'
-    | 'start center';
+    | 'start center'
+    | 'space-between center';
   gap?: 0 | 12 | 20 | 24 | 32 | 36 | 80;
 }
 

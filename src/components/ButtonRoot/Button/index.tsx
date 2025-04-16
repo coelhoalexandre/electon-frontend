@@ -1,3 +1,5 @@
+'use client';
+
 import { ComponentProps } from 'react';
 import { ButtonRootProps, getClassName, getStyle } from '../pattern';
 
@@ -8,12 +10,13 @@ export default function Button({
   variant = 'secondary',
   filling = 'filled',
   size = 'base',
+  radius = '2xl',
   borderWidth = 1,
   className: classes = '',
   children,
   ...props
 }: ButtonProps) {
-  const style = getStyle({ variant, borderWidth, size });
+  const style = getStyle({ variant, borderWidth, size, radius });
   const className = getClassName({ classes, filling });
 
   return (
