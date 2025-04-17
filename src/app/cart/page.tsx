@@ -5,7 +5,8 @@ import Button from '@/components/ButtonRoot/Button';
 import CartButtonList from '@/components/CartButtonList';
 import DeleteIcon from '@/components/Icon/DeleteIcon';
 import Text from '@/components/Text';
-import { useCartContext } from '@/context/cartContext';
+import { useCartContext } from '@/context/CartContext';
+import convertCurrency from '@/utils/convertCurrency';
 import Image from 'next/image';
 
 const productPropertiesList = [
@@ -16,18 +17,9 @@ const productPropertiesList = [
 ] as const;
 
 export default function Cart() {
-  const { cartItems } = useCartContext();
+  const { cartItems, subtotal, incrementItem, decrementItem, removeItem } =
+    useCartContext();
 
-  // [
-  //   {
-  //     id: '1',
-  //     src: 'https://i.imgur.com/UOjYMN8.png',
-  //     name: 'Play game',
-  //     price: 11.7,
-  //     quantity: 1,
-  //     subtotal: 11.7,
-  //   },
-  // ];
   return (
     <main className='frame grid grid-cols-[1fr_auto] grid-rows-[1fr_auto] gap-y-8 gap-x-5'>
       <section>
@@ -71,11 +63,14 @@ export default function Cart() {
                   align='center'
                   className='font-medium text-2xl text-foreground'
                 >
-                  $ {product.price.toLocaleString('pt-BR', { currency: 'BRL' })}
+                  $ {convertCurrency(product.price)}
                 </td>
                 <td align='center'>
                   <div className='grid grid-cols-[auto_1fr_auto] bg-background-gray max-w-32'>
-                    <button className='flex h-full'>
+                    <button
+                      className='flex h-full'
+                      onClick={() => decrementItem(product.id)}
+                    >
                       <Text
                         as='span'
                         weight={500}
@@ -93,7 +88,10 @@ export default function Cart() {
                     >
                       {product.quantity}
                     </Text>
-                    <button className='flex h-full'>
+                    <button
+                      className='flex h-full'
+                      onClick={() => incrementItem(product.id)}
+                    >
                       <Text
                         as='span'
                         weight={500}
@@ -109,15 +107,13 @@ export default function Cart() {
                   align='center'
                   className='font-medium text-2xl text-foreground'
                 >
-                  ${' '}
-                  {product.subtotal.toLocaleString('pt-BR', {
-                    currency: 'BRL',
-                  })}
+                  $ {convertCurrency(product.subtotal)}
                 </td>
 
                 <button
                   aria-label={`Remover o produto ${product.name}`}
                   className='absolute right-0 top-1/2 -translate-y-1/2'
+                  onClick={() => removeItem(product.id)}
                 >
                   <DeleteIcon />
                 </button>
@@ -136,7 +132,7 @@ export default function Cart() {
               <Text size={'xl'} weight={500}>
                 Subtotal
               </Text>
-              <Text size={'2xl'}>$ 1,20</Text>
+              <Text size={'2xl'}>$ {convertCurrency(subtotal)}</Text>
             </Box>
             <Box className='border-y-1 border-foreground-gray py-8 w-full'>
               <form
@@ -158,7 +154,7 @@ export default function Cart() {
             </Box>
             <Box align='space-between center' className='w-full pt-7'>
               <Text size={'base'}>Total amount</Text>
-              <Text size={'lg'}>$ 1,20</Text>
+              <Text size={'lg'}>$ {convertCurrency(subtotal)}</Text>
             </Box>
 
             <Button

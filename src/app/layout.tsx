@@ -23,15 +23,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${poppins.className} antialiased`}>
-        <div hidden className='text-base'></div>
-        <div hidden className='text-lg'></div>
-        <div hidden className='text-xl'></div>
-        <Header />
-        <Providers>{children}</Providers>
-        <Footer />
-      </body>
-    </html>
+    <Providers>
+      <html lang='en'>
+        <body className={`${poppins.className} antialiased`}>
+          <div hidden className='text-base'></div>
+          <div hidden className='text-lg'></div>
+          <div hidden className='text-xl'></div>
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </Providers>
   );
 }

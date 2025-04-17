@@ -10,7 +10,8 @@ import Button from '../ButtonRoot/Button';
 import CartIcon from '../Icon/CartIcon';
 import ButtonLink from '../ButtonRoot/ButtonLink';
 import EyeIcon from '../Icon/EyeIcon';
-import { useCartContext } from '@/context/cartContext';
+import { useCartContext } from '@/context/CartContext';
+import convertCurrency from '@/utils/convertCurrency';
 
 interface ProductCardProps {
   product: IProduct;
@@ -30,7 +31,7 @@ export default function ProductCard({
   hasHover = false,
   isVisibleButtons = false,
 }: ProductCardProps) {
-  const { addCart } = useCartContext();
+  const { addItem: addCart } = useCartContext();
   const [isHover, setIsHover] = useState(false);
 
   const onMouseEnter = () => setIsHover(true);
@@ -54,12 +55,7 @@ export default function ProductCard({
         <Box hidden={isHover} direction='column' gap={12}>
           <h3 className='font-medium text-lg text-primary'>{product.name}</h3>
           <Text weight={600} size={'lg'}>
-            $
-            {product.price.toLocaleString('pt-BR', {
-              currency: 'BRL',
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
+            ${convertCurrency(product.price)}
           </Text>
           <ul className='flex gap-2.5'>
             <li>

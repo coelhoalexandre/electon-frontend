@@ -1,18 +1,13 @@
-'use client';
-
 import Box from '@/components/Box';
-import CartIcon from '@/components/Icon/CartIcon';
 import HeartIcon from '@/components/Icon/HeartIcon';
 import UserIcon from '@/components/Icon/UserIcon';
 import Search from '@/components/Search';
 import Text from '@/components/Text';
-import { useCartContext } from '@/context/cartContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import CartButton from './CartButton';
 
 export default function Main() {
-  const { cartItems } = useCartContext();
-
   return (
     <div className='frame flex justify-between items-center py-6 bg-primary'>
       <Box align='center' gap={80}>
@@ -43,17 +38,7 @@ export default function Main() {
           </Box>
           <Text variant={'background'}>Favorites</Text>
         </Box>
-        <Link href={'/cart'}>
-          <Box gap={12} align='center'>
-            <Box align='center'>
-              <CartIcon />
-              <div className='flex items-center justify-center w-4 h-4 bg-secondary text-xs text-background rounded-full'>
-                {cartItems.length}
-              </div>
-            </Box>
-            <Text variant={'background'}>Cart</Text>
-          </Box>
-        </Link>
+        <CartButton />
       </Box>
     </div>
   );
