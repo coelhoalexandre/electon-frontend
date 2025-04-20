@@ -1,5 +1,4 @@
-import ICartItem from '@/interfaces/ICartProduct';
-import IProduct from '@/interfaces/IProduct';
+import ICartItem from '@/interfaces/ICartItem';
 
 type ActionTypes =
   | 'ADD_ITEM'
@@ -7,21 +6,23 @@ type ActionTypes =
   | 'REMOVE_ALL_ITEMS'
   | 'INCREMENT_ITEM'
   | 'DECREMENT_ITEM';
+// | 'SET_ITEMS'
 
 interface Action {
   type: ActionTypes;
   id?: string;
-  product?: IProduct;
+  cartItem?: ICartItem;
+  // cartItems?: any[]
 }
 
-const getProductIndex = (prevState: ICartItem[], id: string | undefined) => {
-  const productIndex = prevState.findIndex(
+const getCartItemIndex = (prevState: ICartItem[], id: string | undefined) => {
+  const cartItemIndex = prevState.findIndex(
     (cartProduct) => cartProduct.id === id
   );
 
-  if (productIndex === -1) throw new Error('Product is not defined');
+  if (cartItemIndex === -1) throw new Error('Cart Item is not defined');
 
-  return productIndex;
+  return cartItemIndex;
 };
 
 const changeQuantity = (
@@ -29,19 +30,17 @@ const changeQuantity = (
   prevState: ICartItem[],
   id: string | undefined
 ) => {
-  const productIndex = getProductIndex(prevState, id);
-  const currentProduct = prevState[productIndex];
+  const cartItemIndex = getCartItemIndex(prevState, id);
+  const currentProduct = prevState[cartItemIndex];
   const newQuantity = currentProduct.quantity + signal;
-  const newPrice = newQuantity * currentProduct.price;
 
   return [
-    ...prevState.slice(0, productIndex),
+    ...prevState.slice(0, cartItemIndex),
     {
       ...currentProduct,
       quantity: newQuantity,
-      subtotal: newPrice,
     },
-    ...prevState.slice(productIndex + 1),
+    ...prevState.slice(cartItemIndex + 1),
   ];
 };
 
@@ -49,13 +48,18 @@ const actionTypes: Record<
   ActionTypes,
   (prevState: ICartItem[], action: Action) => ICartItem[]
 > = {
-  ADD_ITEM: (prevState, { product }) => {
-    if (!product) throw new Error('Product is not defined');
+  // SET_ITEMS: (prevState, { products }) => {
+  //   if (!products) throw new Error('Products is not defined');
 
-    return [...prevState, { quantity: 1, subtotal: product.price, ...product }];
+  //   return [...prevState, { quantity: 1, subtotal: product.price, ...product }];
+  // },
+  ADD_ITEM: (prevState, { cartItem }) => {
+    if (!cartItem) throw new Error('Cart Item is not defined');
+
+    return [...prevState, cartItem];
   },
   REMOVE_ITEM: (prevState, { id }) => {
-    const productIndex = getProductIndex(prevState, id);
+    const productIndex = getCartItemIndex(prevState, id);
 
     return [
       ...prevState.slice(0, productIndex),

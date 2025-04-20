@@ -1,5 +1,5 @@
 type CatalogEndpoints =
-  | 'categories'
+  | 'category'
   | 'availability'
   | 'product-type'
   | 'brand'

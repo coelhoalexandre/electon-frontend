@@ -1,11 +1,11 @@
 import Box from '@/components/Box';
 import HeartIcon from '@/components/Icon/HeartIcon';
-import UserIcon from '@/components/Icon/UserIcon';
 import Search from '@/components/Search';
 import Text from '@/components/Text';
 import Image from 'next/image';
 import Link from 'next/link';
 import CartButton from './CartButton';
+import SignInButton from './SignInButton';
 
 export default function Main() {
   return (
@@ -25,10 +25,8 @@ export default function Main() {
         <Search />
       </Box>
       <Box gap={32} align='center'>
-        <Box gap={12} align='center'>
-          <UserIcon />
-          <Text variant={'background'}>Sign in</Text>
-        </Box>
+        <SignInButton />
+
         <Box gap={12} align='center'>
           <Box align='center'>
             <HeartIcon />

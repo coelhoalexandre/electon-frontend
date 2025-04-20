@@ -1,8 +1,8 @@
-import { fetchHighlights } from '@/utils/fetchData';
+import { fetchHighlightsProducts } from '@/utils/fetchData';
 import HighlightsCarousel from './HighlightsCarousel';
 
 export default async function Highlights() {
-  const highlightItems = await fetchHighlights();
+  const highlightItems = await fetchHighlightsProducts();
 
   return (
     <section>

@@ -1,12 +1,28 @@
 import { fetchProducts } from '@/utils/fetchData';
 import ProductCard from '../ProductCard';
+import SearchParams from '@/types/SearchParams';
+import FetchProducts from '@/types/FetchProducts';
 
-export default async function ProductList() {
-  const products = await fetchProducts();
+interface ProductListProps {
+  fetchFn?: FetchProducts;
+  take?: number;
+  searchParamsPromise?: SearchParams;
+}
+
+export default async function ProductList({
+  fetchFn,
+  take,
+  searchParamsPromise,
+}: ProductListProps) {
+  const searchParams = (await searchParamsPromise) ?? {};
+
+  const products = fetchFn
+    ? await fetchFn(searchParams, { take })
+    : await fetchProducts(searchParams, { take });
 
   return (
     <ul className='grid grid-cols-[repeat(auto-fill,_minmax(200px,19.375rem))] justify-between gap-5'>
-      {products.list.map((product) => (
+      {products.map((product) => (
         <li key={product.id}>
           <ProductCard product={product} hasHover />
         </li>

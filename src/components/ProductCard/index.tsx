@@ -5,7 +5,7 @@ import Box from '../Box';
 import IProduct from '@/interfaces/IProduct';
 import Text from '../Text';
 import StarIcon from '../Icon/StarIcon';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Button from '../ButtonRoot/Button';
 import CartIcon from '../Icon/CartIcon';
 import ButtonLink from '../ButtonRoot/ButtonLink';

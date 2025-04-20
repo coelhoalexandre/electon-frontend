@@ -17,8 +17,14 @@ const productPropertiesList = [
 ] as const;
 
 export default function Cart() {
-  const { cartItems, subtotal, incrementItem, decrementItem, removeItem } =
-    useCartContext();
+  const {
+    cartItems,
+    subtotal,
+    getCartItemSubtotal,
+    incrementItem,
+    decrementItem,
+    removeItem,
+  } = useCartContext();
 
   return (
     <main className='frame grid grid-cols-[1fr_auto] grid-rows-[1fr_auto] gap-y-8 gap-x-5'>
@@ -44,17 +50,22 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody className=''>
-            {cartItems.map((product) => (
+            {cartItems.map((cartItem) => (
               <tr
-                key={product.id}
+                key={cartItem.id}
                 className='relative border-b-1 border-foreground-gray'
               >
                 <th scope='row' className='py-6'>
                   <Box gap={20} className=''>
-                    <Image src={product.src} alt='' width={130} height={130} />
+                    <Image
+                      src={cartItem.product.src}
+                      alt=''
+                      width={130}
+                      height={130}
+                    />
                     <Box>
                       <h3 className='font-semibold text-xl text-primary'>
-                        {product.name}
+                        {cartItem.product.name}
                       </h3>
                     </Box>
                   </Box>
@@ -63,13 +74,13 @@ export default function Cart() {
                   align='center'
                   className='font-medium text-2xl text-foreground'
                 >
-                  $ {convertCurrency(product.price)}
+                  $ {convertCurrency(cartItem.product.price)}
                 </td>
                 <td align='center'>
                   <div className='grid grid-cols-[auto_1fr_auto] bg-background-gray max-w-32'>
                     <button
                       className='flex h-full'
-                      onClick={() => decrementItem(product.id)}
+                      onClick={() => decrementItem(cartItem)}
                     >
                       <Text
                         as='span'
@@ -86,11 +97,11 @@ export default function Cart() {
                       size={'lg'}
                       className='flex justify-center items-center border-1 border-foreground-gray w-full'
                     >
-                      {product.quantity}
+                      {cartItem.quantity}
                     </Text>
                     <button
                       className='flex h-full'
-                      onClick={() => incrementItem(product.id)}
+                      onClick={() => incrementItem(cartItem)}
                     >
                       <Text
                         as='span'
@@ -107,13 +118,13 @@ export default function Cart() {
                   align='center'
                   className='font-medium text-2xl text-foreground'
                 >
-                  $ {convertCurrency(product.subtotal)}
+                  $ {convertCurrency(getCartItemSubtotal(cartItem))}
                 </td>
 
                 <button
-                  aria-label={`Remover o produto ${product.name}`}
+                  aria-label={`Remover o produto ${cartItem.product.name}`}
                   className='absolute right-0 top-1/2 -translate-y-1/2'
-                  onClick={() => removeItem(product.id)}
+                  onClick={() => removeItem(cartItem)}
                 >
                   <DeleteIcon />
                 </button>

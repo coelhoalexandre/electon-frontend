@@ -1,27 +1,68 @@
 'use client';
 
 import { useSearchParams, useRouter, useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface CatalogParamCheckboxProps {
   id: string;
-  param: string;
+  searchParamKey: string;
 }
 
 export default function CatalogParamCheckbox({
   id,
-  param,
+  searchParamKey,
 }: CatalogParamCheckboxProps) {
   const [checked, setChecked] = useState(false);
   const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
 
-  const toggle = () => setChecked((checked) => !checked);
+  const toggle = () => {
+    if (checked) switchToFalse();
+    else switchToTrue();
+  };
+
+  const switchToFalse = () => {
+    setChecked(false);
+    const queryString = createQueryString(searchParamKey, id, true);
+    router.replace(`/catalog?${queryString}`);
+  };
+
+  const switchToTrue = () => {
+    setChecked(true);
+    const queryString = createQueryString(searchParamKey, id);
+    router.replace(`/catalog?${queryString}`);
+  };
+
+  const createQueryString = useCallback(
+    (name: string, value: string, isRemove?: boolean) => {
+      const params = new URLSearchParams(searchParams.toString());
+      const defaultValue = params.get(name) || '';
+
+      if (isRemove) {
+        params.set(
+          name,
+          defaultValue
+            .replace(value, '')
+            .replace(/(?<=,),|^,/gm, '')
+            .replace(/,$/, '')
+        );
+        if (!params.get(name)) params.delete(name);
+        return params.toString();
+      }
+
+      params.set(name, defaultValue ? `${defaultValue},${value}` : value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   useEffect(() => {
-    console.log(id, param, params, searchParams);
-  }, [checked, id, param, router, params, searchParams]);
+    const values = searchParams.get(searchParamKey)?.split(',');
+
+    if (values?.includes(id)) setChecked(true);
+  }, [id, searchParams, searchParamKey]);
 
   return (
     <div

@@ -1,4 +1,4 @@
-import ICartItem from '@/interfaces/ICartProduct';
+import ICartProduct from '@/interfaces/ICartProduct';
 
 export default class LocalStorage {
   public static setItem<T>(key: string, item: T) {
@@ -18,7 +18,7 @@ export default class LocalStorage {
     return null;
   }
 
-  public static setProduct(product: ICartItem) {
+  public static setProduct(product: ICartProduct) {
     const products = LocalStorage.getAllProducts() || [];
 
     products.push(product);
@@ -26,8 +26,8 @@ export default class LocalStorage {
     LocalStorage.setItem('products', products);
   }
 
-  public static getAllProducts(): ICartItem[] | null {
-    const products = LocalStorage.getItem<ICartItem[]>('products');
+  public static getAllProducts(): ICartProduct[] | null {
+    const products = LocalStorage.getItem<ICartProduct[]>('products');
 
     return products;
   }

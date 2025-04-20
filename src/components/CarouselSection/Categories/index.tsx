@@ -3,7 +3,8 @@ import CategoriesCarousel from './CategoriesCarousel';
 
 export default async function Categories() {
   const categories = await fetchCategories();
-  const filteredList = categories.list.filter((item) => item.isVisible);
+
+  const filteredList = categories.filter((item) => item.isVisible);
   return (
     <section>
       <CategoriesCarousel items={filteredList} />

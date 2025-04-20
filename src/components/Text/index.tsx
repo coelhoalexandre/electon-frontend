@@ -1,41 +1,27 @@
 import { HTMLAttributes, ReactNode } from 'react';
+import Typography, { ITypography, ITypographyElement } from '../Typography';
 
-type Sizes = 'sm' | 'base' | 'lg' | 'xl' | '2xl';
-type Breakpoints = 'sm' | 'md' | 'lg';
-
-interface TextProps {
-  children: ReactNode;
-  variant?: 'foreground' | 'background' | 'primary' | 'secondary';
+export interface TextProps extends ITypography {
   as?: 'p' | 'span';
-  size?: Sizes | Record<Breakpoints, Sizes>;
-  weight?: 400 | 500 | 600 | 700;
-  align?: 'start' | 'center';
+  children: ReactNode;
   className?: HTMLAttributes<'p'>['className'];
 }
 
 export default function Text({
-  children,
-  variant = 'foreground',
   as = 'p',
-  size = 'sm',
-  weight = 400,
-  align = 'start',
+  children,
   className = '',
+  ...props
 }: TextProps) {
-  const Element = as;
-
-  return (
-    <Element
-      style={{
-        ['--variant' as string]: `var(--${variant})`,
-        ['--weight' as string]: weight,
-        ['--size' as string]: `var(--text-${size})`,
-        ['--leading' as string]: `--text-${size}--line-height`,
-        textAlign: align,
-      }}
-      className={`text-(--variant) text-(size:--size) leading-(--leading)  font-(--weight) ${className}`}
-    >
+  const TextElement = as;
+  const Element: ITypographyElement = ({
+    style,
+    className: typographyClassName,
+  }) => (
+    <TextElement style={style} className={typographyClassName + className}>
       {children}
-    </Element>
+    </TextElement>
   );
+
+  return <Typography Element={Element} {...props} />;
 }

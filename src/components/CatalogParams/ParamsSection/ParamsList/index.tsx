@@ -1,23 +1,28 @@
-import { fetchCatalogParams } from '@/utils/fetchData';
 import Text from '@/components/Text';
-import CatalogEndpoints from '@/types/CatalogEndpoints';
 import CatalogParamCheckbox from './CatalogParamCheckbox';
+import ICatalogParamItem from '@/interfaces/ICatalogParamItem';
 
 interface ParamsListProps {
-  endpoint: CatalogEndpoints;
+  fetchParamsFn: () => Promise<ICatalogParamItem[]>;
+  searchParamKey: string;
 }
 
-export default async function ParamsList({ endpoint }: ParamsListProps) {
-  const data = await fetchCatalogParams(endpoint);
-
+export default async function ParamsList({
+  fetchParamsFn,
+  searchParamKey,
+}: ParamsListProps) {
+  const data = await fetchParamsFn();
   return (
     <ul className='flex flex-col gap-3'>
-      {data.list.map((item) => (
+      {data.map((item) => (
         <li
           key={item.id}
           className='grid grid-cols-[auto_1fr_auto] gap-x-2.5 items-center'
         >
-          <CatalogParamCheckbox id={item.slug} param={endpoint} />
+          <CatalogParamCheckbox
+            id={item.slug}
+            searchParamKey={searchParamKey}
+          />
           <Text size={'base'}>{item.name}</Text>
           <Text as='span' size={'base'}>
             {item.totalItems}

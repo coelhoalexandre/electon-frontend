@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "dev:normal": "next dev",
     "server:dev": "json-server db.json --port 8080 --watch",
     "build": "next build",
     "start": "next start",
