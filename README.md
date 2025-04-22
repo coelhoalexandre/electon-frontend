@@ -55,6 +55,8 @@ Obs²: Quase todas as requisições são armazenadas no cache.
 - [ ] Melhorar o Tratamento de Erros
 - [ ] Lidar com os Loadings e partes Assíncronas
 - [ ] Lidar melhor com o gerenciamento de cache
+- [ ] Fazer melhor tratamento das imagens
+- [ ] Melhorar performance
 - [ ] Aprimorar a Acessibilidade
 - [ ] Adicionar Testes Automatizados
 - [ ] Refatoração
