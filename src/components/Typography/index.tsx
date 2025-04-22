@@ -1,7 +1,7 @@
+import Breakpoints from '@/types/Breakpoints';
 import { CSSProperties, JSX } from 'react';
 
-type Sizes = 'sm' | 'base' | 'lg' | 'xl' | '2xl';
-type Breakpoints = 'sm' | 'md' | 'lg';
+type Sizes = 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl';
 
 export interface ITypography {
   variant?: 'foreground' | 'background' | 'primary' | 'secondary';

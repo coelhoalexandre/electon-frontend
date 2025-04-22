@@ -1,4 +1,5 @@
-import Box from '@/components/Box';
+import logout from '@/actions/logout';
+import FlexBox from '@/components/FlexBox';
 import UserIcon from '@/components/Icon/UserIcon';
 import Text from '@/components/Text';
 import { fetchUser } from '@/utils/fetchData';
@@ -9,16 +10,18 @@ export default async function SignInButton() {
   return (
     <>
       {user ? (
-        <Box gap={12} align='center'>
-          <UserIcon />
-          <Text variant={'background'}>{user.username}</Text>
-        </Box>
+        <button onClick={logout}>
+          <FlexBox className='place-items-center gap-3'>
+            <UserIcon title='User' />
+            <Text variant={'background'}>Logout</Text>
+          </FlexBox>
+        </button>
       ) : (
         <Link href={'/signin'}>
-          <Box gap={12} align='center'>
-            <UserIcon />
+          <FlexBox className='place-items-center gap-3'>
+            <UserIcon title='User' />
             <Text variant={'background'}>Sign in</Text>
-          </Box>
+          </FlexBox>
         </Link>
       )}
     </>

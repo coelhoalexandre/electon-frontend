@@ -1,5 +1,5 @@
 import signIn from '@/actions/signIn';
-import Box from '@/components/Box';
+import FlexBox from '@/components/FlexBox';
 import Button from '@/components/ButtonRoot/Button';
 import Form from '@/components/Form';
 import Input from '@/components/Input';
@@ -23,7 +23,7 @@ export default function SignIn() {
             placeholder='Type in you email...'
           ></Input>
         </InputContainer>
-        <Box gap={20}>
+        <FlexBox className='gap-5'>
           <InputContainer>
             <Label required>Password:</Label>
             <Input
@@ -33,9 +33,9 @@ export default function SignIn() {
               placeholder='Type in you password...'
             ></Input>
           </InputContainer>
-        </Box>
+        </FlexBox>
 
-        <Box align='space-between'>
+        <FlexBox className='justify-between'>
           <TypographyLink
             href={'#'}
             typography={{ size: 'sm', variant: 'primary' }}
@@ -50,7 +50,7 @@ export default function SignIn() {
           >
             Would you like to sign up?
           </TypographyLink>
-        </Box>
+        </FlexBox>
 
         <Button type='submit' size='2xl' radius='4xl' className='py-2'>
           Login

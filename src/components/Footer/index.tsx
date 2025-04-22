@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Box from '../Box';
+import FlexBox from '../FlexBox';
 import NewsletterSection from '../NewsletterSection';
 import Text from '../Text';
 import GoogleIcon from '../Icon/GoogleIcon';
@@ -37,9 +37,9 @@ export default function Footer() {
   return (
     <footer className='flex flex-col gap-8 frame bg-tertiary mt-24 py-10'>
       <NewsletterSection />
-      <div className='grid grid-cols-[auto_1fr]'>
-        <Box direction='column' gap={24}>
-          <Box direction='column' gap={32}>
+      <div className='grid gap-y-10 lg:grid-cols-[auto_1fr] lg:gap-y-0'>
+        <FlexBox className='flex-col gap-6'>
+          <FlexBox className='flex-col gap-8'>
             <Image
               id='electon-logo_2'
               src={'/electon_logo_2.png'}
@@ -51,7 +51,7 @@ export default function Footer() {
               64 st james boulevard <br /> hoswick , ze2 7zj
             </Text>
             <hr className='h-[1px] border-foreground-gray' />
-          </Box>
+          </FlexBox>
           <ul className='flex gap-10'>
             <li>
               <GoogleIcon />
@@ -63,11 +63,11 @@ export default function Footer() {
               <WhatsAppIcon />
             </li>
           </ul>
-        </Box>
+        </FlexBox>
 
-        <Box align='space-around'>
+        <FlexBox className='flex-wrap gap-y-8 gap-x-16 md:gap-0 md:justify-around'>
           {footerNavigationList.map((navigation, index) => (
-            <Box key={index} direction='column'>
+            <FlexBox key={index} className='flex-col'>
               <h3 className='text-primary text-lg font-semibold'>
                 {navigation.title}
               </h3>
@@ -84,9 +84,9 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </Box>
+            </FlexBox>
           ))}
-        </Box>
+        </FlexBox>
       </div>
     </footer>
   );

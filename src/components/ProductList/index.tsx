@@ -10,15 +10,13 @@ interface ProductListProps {
 }
 
 export default async function ProductList({
-  fetchFn,
+  fetchFn = fetchProducts,
   take,
   searchParamsPromise,
 }: ProductListProps) {
   const searchParams = (await searchParamsPromise) ?? {};
 
-  const products = fetchFn
-    ? await fetchFn(searchParams, { take })
-    : await fetchProducts(searchParams, { take });
+  const products = (await fetchFn(searchParams, { take })) || [];
 
   return (
     <ul className='grid grid-cols-[repeat(auto-fill,_minmax(200px,19.375rem))] justify-between gap-5'>

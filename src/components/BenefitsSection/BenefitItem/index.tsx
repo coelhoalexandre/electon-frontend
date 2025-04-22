@@ -13,7 +13,7 @@ export default function BenefitItem({
   description,
 }: BenefitItemProps) {
   return (
-    <li className='grid grid-cols-[auto_1fr] grid-rows-2 gap-x-8 gap-y-2'>
+    <li className='grid grid-cols-1 place-items-center grid-rows-2 gap-x-8 gap-y-2 lg:grid-cols-[auto_1fr]'>
       <div className='row-span-2'>
         <Icon />
       </div>

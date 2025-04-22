@@ -2,7 +2,7 @@ import { fetchCategories } from '@/utils/fetchData';
 import CategoriesCarousel from './CategoriesCarousel';
 
 export default async function Categories() {
-  const categories = await fetchCategories();
+  const categories = (await fetchCategories()) || [];
 
   const filteredList = categories.filter((item) => item.isVisible);
   return (

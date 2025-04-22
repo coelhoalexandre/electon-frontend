@@ -1,19 +1,19 @@
 import reviews from '@/common/reviews';
-import Box from '../Box';
+import FlexBox from '../FlexBox';
 import Image from 'next/image';
 import Text from '../Text';
 
 export default function ReviewsSection() {
   return (
     <section className='frame'>
-      <ul className='flex gap-2.5'>
+      <ul className='flex flex-col gap-2.5 md:flex-row'>
         {reviews.map((review, index) => (
           <li
             key={index}
             className='p-4 border-1 border-foreground-gray rounded-3xl'
           >
-            <Box direction='column' gap={24}>
-              <Box gap={36}>
+            <FlexBox className='flex-col gap-6'>
+              <FlexBox className='gap-9'>
                 <Image
                   src={review.photo}
                   alt=''
@@ -22,11 +22,11 @@ export default function ReviewsSection() {
                   className='rounded-full border-2 border-secondary border-dashed p-1.5'
                 />
                 <Text className='flex items-center'>{review.name}</Text>
-              </Box>
-              <Box className='rounded-2xl py-3 px-6 bg-tertiary'>
+              </FlexBox>
+              <FlexBox className='rounded-2xl py-3 px-6 bg-tertiary'>
                 <Text variant='primary'>{review.content}</Text>
-              </Box>
-            </Box>
+              </FlexBox>
+            </FlexBox>
           </li>
         ))}
       </ul>

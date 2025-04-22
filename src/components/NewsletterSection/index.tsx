@@ -5,11 +5,13 @@ import Text from '../Text';
 
 export default function NewsletterSection() {
   return (
-    <section className='flex justify-around items-center w-full bg-background rounded-2xl py-10'>
-      <h2 className='text-3xl text-primary font-bold'>Subscribe newsletter</h2>
+    <section className='grid grid-rows-3 place-items-center gap-4 w-full bg-background rounded-2xl py-10 lg:grid-rows-2 lg:grid-cols-2 xl:gap-0 2xl:grid-rows-1 2xl:grid-cols-3'>
+      <h2 className='text-3xl text-center text-primary font-bold sm:text-left'>
+        Subscribe <br className='block xs:hidden' /> newsletter
+      </h2>
       <form
         action={submitEmail}
-        className='grid grid-cols-[1fr_auto] rounded-3xl py-5 px-6 bg-secondary w-1/4 max-w-96'
+        className='grid grid-cols-[1fr_auto] rounded-3xl py-5 px-6 bg-secondary w-4/5 max-w-96 '
       >
         <input
           type='email'
@@ -22,8 +24,8 @@ export default function NewsletterSection() {
           <SendIcon />
         </button>
       </form>
-      <div className='grid grid-cols-[auto_auto] grid-rows-[auto_auto] gap-x-5'>
-        <span className='row-span-2'>
+      <div className='grid grid-cols-[auto] grid-rows-[auto_auto] gap-x-5 xs:grid-cols-[auto_auto] lg:col-span-2 2xl:col-span-1'>
+        <span className='hidden row-span-2 sm:inline'>
           <HeadphoneIcon />
         </span>
         <Text weight={600}>Call us 24/7:</Text>

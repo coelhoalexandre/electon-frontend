@@ -1,21 +1,20 @@
 'use client';
 
 import ICartItem from '@/interfaces/ICartItem';
-import IProduct from '@/interfaces/IProduct';
-import { createContext, useContext } from 'react';
+import { createContext, use } from 'react';
 
-interface CartContextValue {
-  addItem: (product: IProduct) => void;
-  removeItem: (cartItem: ICartItem) => void;
-  incrementItem: (cartItem: ICartItem) => void;
-  decrementItem: (cartItem: ICartItem) => void;
+export interface ICartContextValue {
+  addItem: (cartItem: ICartItem) => void;
+  removeItem: (id: string) => void;
+  incrementItem: (id: string) => void;
+  decrementItem: (id: string) => void;
   removeAllItems: () => void;
   getCartItemSubtotal: (cartItem: ICartItem) => number;
   subtotal: number;
   cartItems: ICartItem[];
 }
 
-export const CartContext = createContext<CartContextValue>({
+export const CartContext = createContext<ICartContextValue>({
   addItem: () => {},
   removeItem: () => {},
   incrementItem: () => {},
@@ -26,4 +25,4 @@ export const CartContext = createContext<CartContextValue>({
   cartItems: [],
 });
 
-export const useCartContext = () => useContext(CartContext);
+export const useCartContext = () => use(CartContext);

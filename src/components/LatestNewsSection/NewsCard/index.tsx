@@ -1,4 +1,4 @@
-import Box from '@/components/Box';
+import FlexBox from '@/components/FlexBox';
 import Text from '@/components/Text';
 import INews from '@/interfaces/INew';
 import Image from 'next/image';
@@ -30,18 +30,15 @@ export default function NewsCard({ news }: NewsCardProps) {
     ',' +
     news.date.getFullYear();
   return (
-    <Box
-      gap={32}
-      className='w-[40.625rem] border-1 border-foreground-gray rounded-3xl px-4 py-10'
-    >
+    <FlexBox className='flex-col gap-8 border-1 border-foreground-gray rounded-3xl px-4 py-10 max-w-[30rem] 2xl:max-w-[40.675rem] 2xl:flex-row'>
       <Image
         src={news.thumb}
         alt=''
         width={310}
         height={280}
-        className='rounded-3xl'
+        className='rounded-3xl w-full'
       />
-      <Box direction='column' gap={12}>
+      <FlexBox className='flex-col gap-3'>
         <Text
           as='span'
           variant='primary'
@@ -51,16 +48,16 @@ export default function NewsCard({ news }: NewsCardProps) {
         >
           {dateString}
         </Text>
-        <Box direction='column' gap={36}>
-          <Box direction='column' gap={20}>
+        <FlexBox className='flex-col gap-9'>
+          <FlexBox className='flex-col gap-5'>
             <h3 className='font-semibold text-2xl text-primary'>
               {news.title}
             </h3>
             <Text variant='primary'>{news.description}</Text>
-          </Box>
+          </FlexBox>
           <Text variant='primary'>by {news.author}</Text>
-        </Box>
-      </Box>
-    </Box>
+        </FlexBox>
+      </FlexBox>
+    </FlexBox>
   );
 }

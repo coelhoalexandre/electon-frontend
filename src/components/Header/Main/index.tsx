@@ -1,4 +1,4 @@
-import Box from '@/components/Box';
+import FlexBox from '@/components/FlexBox';
 import HeartIcon from '@/components/Icon/HeartIcon';
 import Search from '@/components/Search';
 import Text from '@/components/Text';
@@ -9,8 +9,8 @@ import SignInButton from './SignInButton';
 
 export default function Main() {
   return (
-    <div className='frame flex justify-between items-center py-6 bg-primary'>
-      <Box align='center' gap={80}>
+    <div className='frame flex flex-col justify-between items-center gap-6 py-6 bg-primary lg:flex-row lg:gap-0'>
+      <FlexBox className='place-items-center gap-6 flex-col sm:flex-row sm:gap-20'>
         <Link href={'/'}>
           <h1 aria-labelledby='electon-logo' className='h-fit'>
             <Image
@@ -23,21 +23,24 @@ export default function Main() {
           </h1>
         </Link>
         <Search />
-      </Box>
-      <Box gap={32} align='center'>
+      </FlexBox>
+      <FlexBox className='place-items-center gap-8'>
         <SignInButton />
 
-        <Box gap={12} align='center'>
-          <Box align='center'>
+        <FlexBox className='place-items-center gap-4'>
+          <FlexBox className='place-items-center'>
             <HeartIcon />
             <div className='flex items-center justify-center w-4 h-4 bg-secondary text-xs text-background rounded-full'>
               0
             </div>
-          </Box>
-          <Text variant={'background'}>Favorites</Text>
-        </Box>
+          </FlexBox>
+          <Text variant={'background'} className='hidden xs:block'>
+            Favorites
+          </Text>
+        </FlexBox>
+
         <CartButton />
-      </Box>
+      </FlexBox>
     </div>
   );
 }

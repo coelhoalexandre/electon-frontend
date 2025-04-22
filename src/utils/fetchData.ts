@@ -5,6 +5,7 @@ import IProductFetchOptions from '@/interfaces/IProductFetchOptions';
 import CatalogEndpoints from '@/types/CatalogEndpoints';
 import FetchProducts from '@/types/FetchProducts';
 import getAccessToken from './getAccessToken';
+import IProduct from '@/interfaces/IProduct';
 
 export const SERVER_URL = 'http://localhost:8080';
 
@@ -44,11 +45,10 @@ const fetchData = async (endpoint: string, fetchOptions?: IFetchOptions) => {
 
     if (!response.ok) throw await response.json();
 
-    const data = await response.json();
-
-    return data;
+    return await response.json();
   } catch (error) {
     console.error(error);
+    return error;
   }
 };
 
@@ -58,7 +58,6 @@ const handleProductFetchOptions = (
   productFetchOptions?: IProductFetchOptions
 ) => {
   const options: Record<string, string[] | undefined> = {};
-
   if (!productFetchOptions) return options;
 
   let key: keyof IProductFetchOptions;
@@ -71,8 +70,8 @@ const handleProductFetchOptions = (
 
     if (typeof currentProductFetchOptions === 'string')
       options[key] = currentProductFetchOptions.split(',');
+    else options[key] = currentProductFetchOptions;
   }
-
   return options;
 };
 
@@ -80,18 +79,30 @@ export const fetchProducts: FetchProducts = async (
   productFetchOptions,
   fetchOptions
 ) => {
-  const { categories = [], tags = [] } =
-    handleProductFetchOptions(productFetchOptions);
+  const {
+    categories = [],
+    tags = [],
+    q = [],
+  } = handleProductFetchOptions(productFetchOptions);
   fetchOptions = fetchOptions || {};
 
   const queryString = fetchOptions.queryStrings || [];
 
   if (categories.length) queryString.push(`categories=${categories.join(',')}`);
   if (tags.length) queryString.push(`tags=${tags.join(',')}`);
+  if (q.length) queryString.push(`q=${q.join(',')}`);
 
   fetchOptions.queryStrings = queryString;
 
   return fetchData('product', fetchOptions);
+};
+
+export const fetchProduct = async (slug: string): Promise<IProduct | null> => {
+  const product = await fetchData('product', { path: slug });
+
+  if (product?.slug) return product;
+
+  return null;
 };
 
 export const fetchHighlightsProducts = async () =>
@@ -148,49 +159,46 @@ export const fetchUser = async (): Promise<
   });
 };
 
-export const createCartItem = async (body: { productId: string }) => {
+const manageCartItem = async ({
+  method,
+  path = [],
+  body,
+}: {
+  method: IFetchOptions['method'];
+  path?: string[];
+  body?: IFetchOptions['body'];
+}) => {
   const accessToken = await getAccessToken();
 
-  if (!accessToken) return;
-  return fetchData('cart-item', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
+  const fetchOptions: IFetchOptions = {
+    method,
     body,
-  });
+  };
+  fetchOptions.path = path;
+  const headers: HeadersInit = { 'Content-Type': 'application/json' };
+
+  if (accessToken) {
+    headers.Authorization = `Bearer ${accessToken}`;
+    fetchOptions.path.unshift('auth');
+  } else fetchOptions.path.unshift('no-auth');
+
+  fetchOptions.headers = headers;
+
+  return fetchData('cart-item', fetchOptions);
 };
+
+export const createCartItem = async (body: {
+  productId: string;
+  quantity?: number;
+}) => manageCartItem({ method: 'POST', body });
 
 export const updateCartItem = async (
-  body: { quantity: number },
-  cartItemId: string
-) => {
-  const accessToken = await getAccessToken();
+  cartItemId: string,
+  body: { quantity: number }
+) => manageCartItem({ method: 'PATCH', body, path: [cartItemId] });
 
-  if (!accessToken) return;
-  return fetchData('cart-item', {
-    path: cartItemId,
-    method: 'PATCH',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-    body,
-  });
-};
+export const deleteCartItem = async (cartItemId: string) =>
+  manageCartItem({ method: 'DELETE', path: [cartItemId] });
 
-export const deleteCartItem = async (cartItemId: string) => {
-  const accessToken = await getAccessToken();
-
-  if (!accessToken) return;
-
-  return fetchData('cart-item', {
-    path: cartItemId,
-    method: 'DELETE',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-  });
-};
+export const deleteAllCartItems = async () =>
+  manageCartItem({ method: 'DELETE', path: ['all'] });

@@ -6,13 +6,11 @@ type ActionTypes =
   | 'REMOVE_ALL_ITEMS'
   | 'INCREMENT_ITEM'
   | 'DECREMENT_ITEM';
-// | 'SET_ITEMS'
 
 interface Action {
   type: ActionTypes;
   id?: string;
   cartItem?: ICartItem;
-  // cartItems?: any[]
 }
 
 const getCartItemIndex = (prevState: ICartItem[], id: string | undefined) => {
@@ -48,11 +46,6 @@ const actionTypes: Record<
   ActionTypes,
   (prevState: ICartItem[], action: Action) => ICartItem[]
 > = {
-  // SET_ITEMS: (prevState, { products }) => {
-  //   if (!products) throw new Error('Products is not defined');
-
-  //   return [...prevState, { quantity: 1, subtotal: product.price, ...product }];
-  // },
   ADD_ITEM: (prevState, { cartItem }) => {
     if (!cartItem) throw new Error('Cart Item is not defined');
 

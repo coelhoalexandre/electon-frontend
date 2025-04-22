@@ -16,14 +16,15 @@ export default function HighlightsCarousel({ items }: HighlightsCarouselProps) {
   return (
     <Swiper
       modules={[Pagination]}
-      spaceBetween={0}
+      spaceBetween={20}
       pagination={{ clickable: true }}
       slidesPerView={1}
+      centeredSlides
       loop
     >
       {items.map((item) => (
         <SwiperSlide key={item.id}>
-          <CarouselItem name={item.name} src={item.src}></CarouselItem>
+          <CarouselItem product={item}></CarouselItem>
         </SwiperSlide>
       ))}
     </Swiper>

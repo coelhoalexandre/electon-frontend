@@ -1,4 +1,4 @@
-import Box from '@/components/Box';
+import FlexBox from '@/components/FlexBox';
 import Text from '@/components/Text';
 import Image from 'next/image';
 
@@ -22,14 +22,14 @@ export default function CarouselCard({
         height={100}
         className='h-full w-full'
       />
-      <Box direction='column' gap={12} align='center'>
+      <FlexBox className='flex-col justify-center items-center gap-3'>
         <Text variant='primary' size='xl' weight={600}>
           {category}
         </Text>
         <Text variant='primary' size='lg' weight={500}>
           ({itemsQuant} Items)
         </Text>
-      </Box>
+      </FlexBox>
     </div>
   );
 }

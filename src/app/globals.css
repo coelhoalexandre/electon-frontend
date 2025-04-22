@@ -18,6 +18,7 @@
   --tertiary-dark-hover: #6ea1bd;
 
   --error: #c33131;
+  --success: #30bd57;
 }
 
 @theme inline {
@@ -38,16 +39,23 @@
   --color-tertiary-dark-hover: var(--tertiary-dark-hover);
 
   --color-error: var(--error);
+  --color-success: var(--success);
 
   --font-primary: var(--font-poppins);
 
+  --breakpoint-xs: 30rem;
   --breakpoint-2xl: 90rem;
 }
 
 @layer components {
   .frame {
-    padding-left: calc(var(--spacing) * 15);
-    padding-right: calc(var(--spacing) * 15);
+    padding-left: calc(var(--spacing) * 8);
+    padding-right: calc(var(--spacing) * 8);
+
+    @variant sm {
+      padding-left: calc(var(--spacing) * 15);
+      padding-right: calc(var(--spacing) * 15);
+    }
   }
 }
 
@@ -62,4 +70,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
 }

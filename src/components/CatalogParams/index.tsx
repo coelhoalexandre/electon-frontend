@@ -4,7 +4,7 @@ import ParamsList from './ParamsSection/ParamsList';
 
 export default function CatalogParams() {
   return (
-    <aside className='flex flex-col w-xs'>
+    <aside className='hidden md:flex flex-col w-xs'>
       <ParamsSection title='Categories'>
         <ParamsList
           fetchParamsFn={fetchParamCategories}

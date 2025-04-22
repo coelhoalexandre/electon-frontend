@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import Box from '../Box';
+import FlexBox from '../FlexBox';
 import SectionTitle from '../SectionTitle';
 import NewsCard from './NewsCard';
 
 export default function LatestNewsSection() {
   return (
     <section className='frame'>
-      <Box align='space-between'>
+      <FlexBox className='justify-between'>
         <SectionTitle>Latest News</SectionTitle>
         <Link href={'#'} className='font-medium text-xl text-primary'>
           View all
         </Link>
-      </Box>
+      </FlexBox>
       <ul className='flex flex-wrap justify-between gap-5'>
         <li>
           <NewsCard

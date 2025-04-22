@@ -3,7 +3,7 @@ import NavigationItemDropdown from './NavigationItemDropdown';
 
 export default function NavigationList() {
   return (
-    <ul className='flex gap-7'>
+    <ul className='hidden lg:flex gap-7'>
       <li>
         <NavigationItemDropdown item='Home' itemList={[]} />
       </li>

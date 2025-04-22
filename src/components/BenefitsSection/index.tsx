@@ -6,7 +6,7 @@ import BenefitItem from './BenefitItem';
 export default function BenefitsSection() {
   return (
     <section className='frame w-full '>
-      <ul className='flex justify-around py-10 bg-tertiary rounded-2xl'>
+      <ul className='flex flex-col gap-10 justify-around py-10 bg-tertiary rounded-2xl md:flex-row md:gap-0'>
         <BenefitItem
           Icon={DeliveryIcon}
           title='Free delivery'

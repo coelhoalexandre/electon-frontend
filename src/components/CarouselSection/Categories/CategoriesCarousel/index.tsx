@@ -19,7 +19,7 @@ export default function CategoriesCarousel({ items }: CategoriesCarouselProps) {
       spaceBetween={40}
       pagination={{ clickable: true }}
       navigation
-      slidesPerView={3}
+      slidesPerView={'auto'}
       loop
       centeredSlides
       centeredSlidesBounds

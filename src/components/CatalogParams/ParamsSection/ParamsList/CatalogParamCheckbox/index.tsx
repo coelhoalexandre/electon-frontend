@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams, useRouter, useParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 interface CatalogParamCheckboxProps {
@@ -14,7 +14,6 @@ export default function CatalogParamCheckbox({
 }: CatalogParamCheckboxProps) {
   const [checked, setChecked] = useState(false);
   const router = useRouter();
-  const params = useParams();
   const searchParams = useSearchParams();
 
   const toggle = () => {

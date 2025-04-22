@@ -1,13 +1,15 @@
 'use client';
 
-import Box from '@/components/Box';
+import FlexBox from '@/components/FlexBox';
 import Button from '@/components/ButtonRoot/Button';
 import CartButtonList from '@/components/CartButtonList';
 import DeleteIcon from '@/components/Icon/DeleteIcon';
 import Text from '@/components/Text';
 import { useCartContext } from '@/context/CartContext';
 import convertCurrency from '@/utils/convertCurrency';
+import ManageCartItem from '@/utils/ManageCartItem';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const productPropertiesList = [
   'product',
@@ -17,20 +19,14 @@ const productPropertiesList = [
 ] as const;
 
 export default function Cart() {
-  const {
-    cartItems,
-    subtotal,
-    getCartItemSubtotal,
-    incrementItem,
-    decrementItem,
-    removeItem,
-  } = useCartContext();
-
+  const cartContext = useCartContext();
+  const manageCartItem = new ManageCartItem(cartContext);
+  const [pending, setPending] = useState(false);
   return (
-    <main className='frame grid grid-cols-[1fr_auto] grid-rows-[1fr_auto] gap-y-8 gap-x-5'>
-      <section>
-        <table className='w-full'>
-          <thead>
+    <main className='frame grid grid-rows-3 gap-y-8 gap-x-5 mt-24 lg:grid-rows-[1fr_auto] lg:grid-cols-[1fr_auto]'>
+      <section className='overflow-x-auto'>
+        <table className='w-full min-w-4xl'>
+          <thead className=''>
             <tr className='bg-tertiary py-3 px-8'>
               {productPropertiesList.map((property, index) => (
                 <th
@@ -50,26 +46,26 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody className=''>
-            {cartItems.map((cartItem) => (
+            {manageCartItem.cartItems.map((cartItem) => (
               <tr
                 key={cartItem.id}
                 className='relative border-b-1 border-foreground-gray'
               >
-                <th scope='row' className='py-6'>
-                  <Box gap={20} className=''>
+                <td scope='row' className='py-6' align='center'>
+                  <FlexBox className='gap-5'>
                     <Image
                       src={cartItem.product.src}
                       alt=''
                       width={130}
                       height={130}
                     />
-                    <Box>
+                    <FlexBox>
                       <h3 className='font-semibold text-xl text-primary'>
                         {cartItem.product.name}
                       </h3>
-                    </Box>
-                  </Box>
-                </th>
+                    </FlexBox>
+                  </FlexBox>
+                </td>
                 <td
                   align='center'
                   className='font-medium text-2xl text-foreground'
@@ -80,7 +76,12 @@ export default function Cart() {
                   <div className='grid grid-cols-[auto_1fr_auto] bg-background-gray max-w-32'>
                     <button
                       className='flex h-full'
-                      onClick={() => decrementItem(cartItem)}
+                      onClick={manageCartItem.decrementCartItem.bind(
+                        null,
+                        cartItem,
+                        setPending
+                      )}
+                      disabled={pending}
                     >
                       <Text
                         as='span'
@@ -101,7 +102,12 @@ export default function Cart() {
                     </Text>
                     <button
                       className='flex h-full'
-                      onClick={() => incrementItem(cartItem)}
+                      onClick={manageCartItem.incrementCartItem.bind(
+                        null,
+                        cartItem,
+                        setPending
+                      )}
+                      disabled={pending}
                     >
                       <Text
                         as='span'
@@ -118,13 +124,21 @@ export default function Cart() {
                   align='center'
                   className='font-medium text-2xl text-foreground'
                 >
-                  $ {convertCurrency(getCartItemSubtotal(cartItem))}
+                  ${' '}
+                  {convertCurrency(
+                    manageCartItem.getCartItemSubtotal(cartItem)
+                  )}
                 </td>
 
                 <button
                   aria-label={`Remover o produto ${cartItem.product.name}`}
                   className='absolute right-0 top-1/2 -translate-y-1/2'
-                  onClick={() => removeItem(cartItem)}
+                  onClick={manageCartItem.removeCartItem.bind(
+                    null,
+                    cartItem.id,
+                    setPending
+                  )}
+                  disabled={pending}
                 >
                   <DeleteIcon />
                 </button>
@@ -138,14 +152,16 @@ export default function Cart() {
           Cart total
         </h3>
         <form action=''>
-          <Box direction='column' className='py-5 px-11'>
-            <Box align='space-between' className='w-full pb-5'>
+          <FlexBox className='flex-col py-5 px-11'>
+            <FlexBox className='justify-between w-full pb-5'>
               <Text size={'xl'} weight={500}>
                 Subtotal
               </Text>
-              <Text size={'2xl'}>$ {convertCurrency(subtotal)}</Text>
-            </Box>
-            <Box className='border-y-1 border-foreground-gray py-8 w-full'>
+              <Text size={'2xl'}>
+                $ {convertCurrency(manageCartItem.subtotal)}
+              </Text>
+            </FlexBox>
+            <FlexBox className='border-y-1 border-foreground-gray py-8 w-full'>
               <form
                 action=''
                 className='grid grid-cols-[1fr_auto] border-1 border-foreground-gray rounded-3xl py-5 px-3 w-full'
@@ -162,11 +178,13 @@ export default function Cart() {
                   Apply
                 </button>
               </form>
-            </Box>
-            <Box align='space-between center' className='w-full pt-7'>
+            </FlexBox>
+            <FlexBox className='justify-between items-center w-full pt-7'>
               <Text size={'base'}>Total amount</Text>
-              <Text size={'lg'}>$ {convertCurrency(subtotal)}</Text>
-            </Box>
+              <Text size={'lg'}>
+                $ {convertCurrency(manageCartItem.subtotal)}
+              </Text>
+            </FlexBox>
 
             <Button
               type='submit'
@@ -175,9 +193,9 @@ export default function Cart() {
               radius='4xl'
               className='w-full mt-8 py-3'
             >
-              Proceed to ckeckout
+              Proceed to checkout
             </Button>
-          </Box>
+          </FlexBox>
         </form>
       </section>
       <section className=''>
