@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Electon Frontend
 
-## Getting Started
+## Rodando o projeto
 
-First, run the development server:
+Após a clonagem do projeto, é necessário instalar as dependências com o `npm install` e é possível iniciar o projeto com `npm run dev`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Obs¹: O Projeto depende de um servidor na url http://localhost:8080, definida no @/utils/fetchData como SERVER_URL, no qual a página solicita dados. A falta dele pode gerar instabilidades na apresentação da página.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Obs²: Quase todas as requisições são armazenadas no cache.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Ferramentas Usadas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- HTML, CSS e JS
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Headlessui (Dropdown)
+- Swiper
+- JSON Server
 
-## Learn More
+## Rotas
 
-To learn more about Next.js, take a look at the following resources:
+- **/** -> Rota da Página Inicial
+- **/catalog** -> Rota da Página de Catalogo
+- **/product/[slug]** -> Rota de um produto buscado por slug
+- **/cart** -> Rota do carrinho
+- **/signup** -> Rota de cadastro
+- **/signin** -> Rota de login
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Objetivos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[x] Página Inicial
+[x] Página de Catálogo
+[x] Página do Carrinho
+[x] Criar Sistema de Carrinho LocalStorage e deslogado
+[x] Criar base do Registro e Autenticação
+[x] Aprimorar Sistema de Carrinho para estado de logado
+[x] Página de Produto
+[x] Responsividade
+[x] Fazer a pesquisa de produtos
+[] Criar Variações de Produtos para cores, preços e marcas
+[] Terminar Página de Produto
+[] Ajustar Parâmetros de Busca no Catálogo
+[] Fazer Favoritos com lógica similar ao Carrinho
+[] Ajustar Dropdowns no Header
+[] Correções de Designs fora dos padrões, como os carrosséis
+[] Aprimorar Lógica de Registro e Autenticação (Refresh Token)
+[] Fazer verificações de formulário nas páginas de Cadastro e Login (Zod?)
+[] Desenvolver a Parte de Reviews
+[] Página de Checkout
+[] Ser capaz de realizar pedidos
+[] Melhorar Página de Not Found
+[] Corrigir Bugs, Partes Faltantes e pequenos Erros
+[] Melhorar o Tratamento de Erros
+[] Lidar com os Loadings e partes Assíncronas
+[] Lidar melhor com o gerenciamento de cache
+[] Aprimorar a Acessibilidade
+[] Adicionar Testes Automatizados
+[] Refatoração
+[] Coisas extras? (Admin Page, Blog, About us, Subscribe newsletter)
