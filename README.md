@@ -30,32 +30,32 @@ Obs²: Quase todas as requisições são armazenadas no cache.
 
 ## Objetivos
 
-[x] Página Inicial
-[x] Página de Catálogo
-[x] Página do Carrinho
-[x] Criar Sistema de Carrinho LocalStorage e deslogado
-[x] Criar base do Registro e Autenticação
-[x] Aprimorar Sistema de Carrinho para estado de logado
-[x] Página de Produto
-[x] Responsividade
-[x] Fazer a pesquisa de produtos
-[] Criar Variações de Produtos para cores, preços e marcas
-[] Terminar Página de Produto
-[] Ajustar Parâmetros de Busca no Catálogo
-[] Fazer Favoritos com lógica similar ao Carrinho
-[] Ajustar Dropdowns no Header
-[] Correções de Designs fora dos padrões, como os carrosséis
-[] Aprimorar Lógica de Registro e Autenticação (Refresh Token)
-[] Fazer verificações de formulário nas páginas de Cadastro e Login (Zod?)
-[] Desenvolver a Parte de Reviews
-[] Página de Checkout
-[] Ser capaz de realizar pedidos
-[] Melhorar Página de Not Found
-[] Corrigir Bugs, Partes Faltantes e pequenos Erros
-[] Melhorar o Tratamento de Erros
-[] Lidar com os Loadings e partes Assíncronas
-[] Lidar melhor com o gerenciamento de cache
-[] Aprimorar a Acessibilidade
-[] Adicionar Testes Automatizados
-[] Refatoração
-[] Coisas extras? (Admin Page, Blog, About us, Subscribe newsletter)
+- [x] Página Inicial
+- [x] Página de Catálogo
+- [x] Página do Carrinho
+- [x] Criar Sistema de Carrinho LocalStorage e deslogado
+- [x] Criar base do Registro e Autenticação
+- [x] Aprimorar Sistema de Carrinho para estado de logado
+- [x] Página de Produto
+- [x] Responsividade
+- [x] Fazer a pesquisa de produtos
+- [] Criar Variações de Produtos para cores, preços e marcas
+- [] Terminar Página de Produto
+- [] Ajustar Parâmetros de Busca no Catálogo
+- [] Fazer Favoritos com lógica similar ao Carrinho
+- [] Ajustar Dropdowns no Header
+- [] Correções de Designs fora dos padrões, como os carrosséis
+- [] Aprimorar Lógica de Registro e Autenticação (Refresh Token)
+- [] Fazer verificações de formulário nas páginas de Cadastro e Login (Zod?)
+- [] Desenvolver a Parte de Reviews
+- [] Página de Checkout
+- [] Ser capaz de realizar pedidos
+- [] Melhorar Página de Not Found
+- [] Corrigir Bugs, Partes Faltantes e pequenos Erros
+- [] Melhorar o Tratamento de Erros
+- [] Lidar com os Loadings e partes Assíncronas
+- [] Lidar melhor com o gerenciamento de cache
+- [] Aprimorar a Acessibilidade
+- [] Adicionar Testes Automatizados
+- [] Refatoração
+- [] Coisas extras? (Admin Page, Blog, About us, Subscribe newsletter)
